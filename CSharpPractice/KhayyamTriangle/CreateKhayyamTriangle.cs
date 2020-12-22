@@ -8,23 +8,23 @@ namespace KhayyamTriangle
 {
     public class CreateKhayyamTriangle
     {
-       public static List<Array> KhayyamTriangle(int NumberOfLevel)
-       {
-            for (int i = 0; i < NumberOfLevel; i++)
+        public static List<Array> CreateTriangle(int numberOfLevel)
+        {
+            List<Array> Triangle = new List<Array>();
+            for (int i = 0; i < numberOfLevel + 1; i++)
             {
-                List<Array> Triangle = new List<Array>();
-                var levelOfTriangle = new int[i];
+                var levelOfTriangle = new int[i + 1];
 
-                for (int j = 0; j < i; j++)
+                for (int j = 0; j < i + 1; j++)
                 {
-                    if ((j == 0) && (j == NumberOfLevel - 1))
+                    if ((j == 0) || (j == i))
                     {
                         levelOfTriangle[j] = 1;
                     }
                     else
                     {
-                        var tempArray = Triangle[i];
-                        levelOfTriangle[j] = tempArray[j - 1] + tempArray[j];
+                        var tempArray = Triangle[i - 1];
+                        levelOfTriangle[j] = Convert.ToInt32(tempArray.GetValue(j - 1)) + Convert.ToInt32(tempArray.GetValue(j));
                     }
                 }
 

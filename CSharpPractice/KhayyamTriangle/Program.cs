@@ -6,39 +6,69 @@ using System.Threading.Tasks;
 
 namespace KhayyamTriangle
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Please enter number of levels triangle :");
-            int NumberOfLevel=Convert.ToInt32( Console.ReadLine());
-            List<Array> Triangle = new List<Array>();
-            for (int i = 0; i < NumberOfLevel; i++)
-            {  
-                var levelOfTriangle = new int[i+1];
+            int numberOfLevel = Convert.ToInt32(Console.ReadLine());
 
-                for (int j = 0; j < i+1; j++)
-                {
-                    if ((j == 0) && (j == i ))
-                    {
-                        levelOfTriangle[j] = 1;
-                    }
-                    else
-                    {
-                        var tempArray = Triangle[i-1];
-                        levelOfTriangle[j] = Convert.ToInt32( tempArray.GetValue(j-1))+ Convert.ToInt32(tempArray.GetValue(j));
-                    }
-                    Triangle.Add(levelOfTriangle);
-                }
-                
-            };
+            var Triangle = CreateKhayyamTriangle.CreateTriangle(numberOfLevel);
 
-            Console.WriteLine("Your List sorted: ");
+            Console.WriteLine("You created a Khayyam Triangle in {0} levels: ", numberOfLevel);
+
             for (int i = 0; i < Triangle.Count; i++)
             {
-                Console.WriteLine(string.Format("" + Triangle[i]));
+                var triangle = Triangle[i];
+
+                for (int j = 0; j < triangle.Length; j++)
+                {
+                    Console.Write("{0}  ", triangle.GetValue(j));
+                }
+                Console.Write("\n");
             }
 
+
+
+            //****my mistake try******///
+            //for (int i = 0; i < Triangle.Count; i++)
+            //{
+            //    var triangle = Triangle[i];
+            //    Console.Write(triangle);
+            //}
+
+            //for (int i = 0; i < Triangle.Count; i++)
+            //{
+            //    var triangle = Triangle[i];
+            //    foreach (var item in triangle)
+            //    {  
+            //        Console.WriteLine(item);
+            //    }
+            //}
+
+            //for (int i = 0; i < Triangle.Count; i++)
+            //{
+            //    var triangle = Triangle[i];
+            //    foreach (var item in triangle)
+            //    {
+            //        var stringTrianle = item.ToString();
+            //        Console.WriteLine(string.Join(",", stringTrianle));
+            //    }
+            //}
+
+            //for (int i = 0; i < Triangle.Count; i++)
+            //{
+            //    var triangle = Triangle[i];
+            //    foreach (var item in triangle)
+            //    {
+            //        Console.WriteLine(item.ToString());
+            //    }
+            //}
+
+
+
+
+            Console.ReadLine();
         }
     }
 }
